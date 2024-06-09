@@ -1,4 +1,3 @@
-// src/app/components/mazulejo/mazulejo.component.ts
 import { Component, Renderer2, OnInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, PLATFORM_ID } from '@angular/core';
@@ -24,10 +23,16 @@ export class MAzulejoComponent implements OnInit {
 
     if (historyImage && audio) {
       this.renderer.listen(historyImage, 'click', () => {
-        audio.play().then(() => {
-        }).catch(error => {
-          console.error('Erro ao reproduzir o áudio', error);
-        });
+        if (audio.paused) {
+          audio.play().then(() => {
+            console.log('Áudio reproduzido');
+          }).catch(error => {
+            console.error('Erro ao reproduzir o áudio', error);
+          });
+        } else {
+          audio.pause();
+          console.log('Áudio pausado');
+        }
       });
     } else {
       console.error('Elementos não encontrados', { historyImage, audio });

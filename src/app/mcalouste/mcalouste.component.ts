@@ -2,15 +2,13 @@ import { Component, Renderer2, OnInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, PLATFORM_ID } from '@angular/core';
 
-
 @Component({
   selector: 'app-mcalouste',
   templateUrl: './mcalouste.component.html',
-  styleUrl: './mcalouste.component.css'
+  styleUrls: ['./mcalouste.component.css']
 })
+export class McalousteComponent implements OnInit {
 
-export class McalousteComponent {
-  
   constructor(private renderer: Renderer2, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
@@ -25,10 +23,16 @@ export class McalousteComponent {
 
     if (historyImage && audio) {
       this.renderer.listen(historyImage, 'click', () => {
-        audio.play().then(() => {
-        }).catch(error => {
-          console.error('Erro ao reproduzir o áudio', error);
-        });
+        if (audio.paused) {
+          audio.play().then(() => {
+            console.log('Áudio reproduzido');
+          }).catch(error => {
+            console.error('Erro ao reproduzir o áudio', error);
+          });
+        } else {
+          audio.pause();
+          console.log('Áudio pausado');
+        }
       });
     } else {
       console.error('Elementos não encontrados', { historyImage, audio });
