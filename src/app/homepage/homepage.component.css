@@ -1,0 +1,8 @@
+.footer-col-left {
+    width: 25%;
+}
+
+.footer-col-right {
+    width: 75%;
+    text-align: end;
+}

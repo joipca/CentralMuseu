@@ -1,0 +1,24 @@
+.navbar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+  }
+  
+  .container-fluid {
+    margin-left: 250px;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+  
+    .container-fluid {
+      margin-left: 0;
+    }
+  }
+  

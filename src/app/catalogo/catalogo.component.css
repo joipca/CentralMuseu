@@ -1,0 +1,7 @@
+.card-img-top {
+    height: 400px;
+    object-fit: cover;
+}
+.card {
+    height: 900px; /* Altura fixa para o card */
+}
